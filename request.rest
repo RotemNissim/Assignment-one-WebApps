@@ -1,0 +1,27 @@
+# Add a New Post
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+  "title": "Sample Post",
+  "content": "This is a sample post content.",
+  "sender": "user001"
+}
+
+# Get All Posts
+GET http://localhost:3000/api/posts
+
+# Get a Post by ID
+GET http://localhost:3000/api/posts/63a9f0ea7b51066c46c9525d
+
+# Get Posts by Sender
+GET http://localhost:3000/api/posts?sender=user001
+
+# Update a Post
+PUT http://localhost:3000/api/posts/63a9f0ea7b51066c46c9525d
+Content-Type: application/json
+
+{
+  "title": "Updated Sample Post",
+  "content": "This is the updated content of the sample post."
+}
