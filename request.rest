@@ -33,14 +33,14 @@ Content-Type: application/json
 {
   "postId": "676d4cf23d6a58a1e4049126",
   "content": "This is a comment on the sample post.",
-  "sender": "user002"
+  "author": "user002"
 }
 
 ### Get All Comments for a Post
 GET http://localhost:3000/api/comments?postId=63a9f0ea7b51066c46c9525d
 
 ### Update a Comment
-PUT http://localhost:3000/api/comments/63aa9d9c2b51067d66b1254f
+PUT http://localhost:3000/api/comments/676d61e6864f7e93a7feab5c
 Content-Type: application/json
 
 {
@@ -48,4 +48,4 @@ Content-Type: application/json
 }
 
 ### Delete a Comment
-DELETE http://localhost:3000/api/comments/63aa9d9c2b51067d66b1254f
+DELETE http://localhost:3000/api/comments/676d61e6864f7e93a7feab5c
