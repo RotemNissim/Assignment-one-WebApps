@@ -5,6 +5,8 @@ require('dotenv').config();
 
 const postRoutes = require('./routes/postRoutes');
 
+
+
 const mongoConnectionString = process.env.CONNECTION_STRING;
 const port = process.env.PORT;
 
@@ -19,5 +21,6 @@ mongoose.connect(mongoConnectionString)
     });
 
 app.use('/api', postRoutes); // Use postRoutes for all post-related routes
+
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
