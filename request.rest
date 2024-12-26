@@ -25,3 +25,27 @@ Content-Type: application/json
   "title": "Updated Sample Post",
   "content": "This is the updated content of the sample post."
 }
+
+# Add a New Comment
+POST http://localhost:3000/api/comments
+Content-Type: application/json
+
+{
+  "postId": "63a9f0ea7b51066c46c9525d",
+  "content": "This is a comment on the sample post.",
+  "sender": "user002"
+}
+
+# Get All Comments for a Post
+GET http://localhost:3000/api/comments?postId=63a9f0ea7b51066c46c9525d
+
+# Update a Comment
+PUT http://localhost:3000/api/comments/63aa9d9c2b51067d66b1254f
+Content-Type: application/json
+
+{
+  "content": "This is the updated content of the comment."
+}
+
+# Delete a Comment
+DELETE http://localhost:3000/api/comments/63aa9d9c2b51067d66b1254f
