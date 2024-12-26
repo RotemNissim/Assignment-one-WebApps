@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const postRoutes = require('./routes/postRoutes');
-// const commentRoutes = require('./routes/commentRoutes');
+const postsController = require('./controllers/postController');
+
 const mongoConnectionString = process.env.CONNECTION_STRING;
 const port = process.env.PORT;
 
@@ -19,6 +20,6 @@ mongoose.connect(mongoConnectionString)
 
 
 app.use(postRoutes);
-// app.use(commentRoutes);
+app.use('/api', postsController);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
