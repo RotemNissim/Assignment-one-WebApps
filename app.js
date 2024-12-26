@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const postRoutes = require('./routes/postRoutes');
+const commentRoutes = require('./routes/commentRoutes');
 
 
 
@@ -21,6 +22,7 @@ mongoose.connect(mongoConnectionString)
     });
 
 app.use('/api', postRoutes); // Use postRoutes for all post-related routes
+app.use('/api', commentRoutes); // Use commentRoutes for all
 
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
