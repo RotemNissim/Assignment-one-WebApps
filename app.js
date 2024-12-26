@@ -4,14 +4,15 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const postRoutes = require('./routes/postRoutes');
-const postsController = require('./controllers/postController');
-const postsController = require('./controllers/commentController');
+
+
 
 const mongoConnectionString = process.env.CONNECTION_STRING;
 const port = process.env.PORT;
 
 const app = express();
 app.use(bodyParser.json());
+
 mongoose.connect(mongoConnectionString)
     .then(() => console.log('MongoDB connected'))
     .catch(err => {
@@ -19,10 +20,7 @@ mongoose.connect(mongoConnectionString)
         process.exit(1); // Exit the application if the connection fails
     });
 
+app.use('/api', postRoutes); // Use postRoutes for all post-related routes
 
-app.use(postRoutes);
-app.use(commentRoutes);
-app.use('/api', postsController);
-app.use('/api', commentController);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

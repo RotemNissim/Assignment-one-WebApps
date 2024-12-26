@@ -3,7 +3,7 @@ const router = express.Router();
 const Post = require('../models/post');
 
 // Add a New Post
-router.post('/post', async (req, res) => {
+router.post('/posts', async (req, res) => {
     try {
         const post = new Post(req.body);
         await post.save();
@@ -14,7 +14,7 @@ router.post('/post', async (req, res) => {
 });
 
 // Get All Posts
-router.get('/post', async (req, res) => {
+router.get('/posts', async (req, res) => {
     try {
         const posts = await Post.find();
         res.json(posts);
@@ -24,7 +24,7 @@ router.get('/post', async (req, res) => {
 });
 
 // Get a Post by ID
-router.get('/post/:id', async (req, res) => {
+router.get('/posts/:id', async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
         if (!post) return res.status(404).send('Post not found');
@@ -35,7 +35,7 @@ router.get('/post/:id', async (req, res) => {
 });
 
 // Get Posts by Sender
-router.get('/post', async (req, res) => {
+router.get('/posts', async (req, res) => {
     const { sender } = req.query;
     if (!sender) return res.status(400).send('Sender ID is required');
     try {
@@ -47,7 +47,7 @@ router.get('/post', async (req, res) => {
 });
 
 // Update a Post
-router.put('/post/:id', async (req, res) => {
+router.put('/posts/:id', async (req, res) => {
     try {
         const post = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!post) return res.status(404).send('Post not found');
