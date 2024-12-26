@@ -48,3 +48,14 @@ exports.deleteComment = async (req, res) => {
         res.status(500).json({ message: 'Failed to delete comment', error });
     }
 };
+
+// Create a new comment
+exports.createComment = async (req, res) => {
+    try {
+        const { postId, content, author } = req.body;
+        const newComment = await Comment.create({ postId, content, author });
+        res.status(201).json(newComment);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to create comment', error });
+    }
+};
