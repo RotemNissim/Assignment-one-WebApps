@@ -4,6 +4,18 @@ const Post = require('../models/post'); // Assuming you have a Mongoose model fo
 // Create a new router instance
 const router = express.Router();
 
+// Add a new post
+router.post('/posts', async (req, res) => {
+    try {
+        const { title, content, sender } = req.body;
+        const newPost = new Post({ title, content, sender });
+        await newPost.save();
+        res.status(201).json(newPost);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
 // Get all posts
 router.get('/posts', async (req, res) => {
     try {

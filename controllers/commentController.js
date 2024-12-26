@@ -10,12 +10,12 @@ exports.getAllComments = async (req, res) => {
     }
 };
 
-// Get comments by post ID
+// Get comment by post ID
 exports.getCommentsByPost = async (req, res) => {
     try {
         const { postId } = req.params;
-        const comments = await Comment.find({ postId });
-        res.status(200).json(comments);
+        const comment = await Comment.find({ postId });
+        res.status(200).json(comment);
     } catch (error) {
         res.status(500).json({ message: 'Failed to fetch comments for the post', error });
     }
